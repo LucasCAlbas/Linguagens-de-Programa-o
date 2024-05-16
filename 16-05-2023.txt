@@ -1,0 +1,69 @@
+(format t "Fatorial")
+
+(defun fatorial (f)
+  (if (<= f 2)
+      f;;verdadeiro
+      (* f (fatorial (- f 1)));;falso
+      ))
+  
+  
+(format t "~% ~D" (fatorial 5))
+
+(format t "~%~%Contador ~%")
+
+(defun conta (x y)
+  (cond
+      ((<= x y) (format t " ~D " x) (conta (+ x 1) y))
+      (t nil)))
+      (conta 5 10)
+      
+(format t "~%~%Exibir~%")
+
+(defvar A 10)
+(defvar B 20)
+
+(terpri)
+(write 'A);; apostrofe faz literalmente exibir o 'A'
+(format t "~%~A" 'B)
+(format t "~%~A" '(+ A B))
+(format t "~%~A ~D " '(+ A B) (+ A B))
+
+(format t "~%~%Lista-Cons~%");;exibe cauda e cabeça juntados 
+
+(format t "~%~A" (cons 'A 'B ))
+(format t "~%~A" (cons 'A '(B C)))
+(format t "~%~A" (cons 'A (cons 'B '(C D E)))) ;; junta cabeça A com a cabeça B que se juntou com a cauda C D E
+
+(format t "~%~%Lista-Car~%");;exibe cabeça
+
+(format t "~%~A" (car '(A B C)))
+(format t "~%~A" (car '((A B) C D)))
+(format t "~%~A" (car '(() B C)))
+
+(format t "~%~%Lista-Cdr~%");;exibe cauda
+
+(format t "~%~A" (cdr '(A B C)))
+(format t "~%~A" (cdr '((A B) C)))
+(format t "~%~A" (cdr '(A (B C))))
+
+(format t "~%~%Exercicios")
+(format t "~%~%1-)~%")
+(defun soma (L)
+    (if (null L)
+        0
+        (+ (car L) (soma (cdr L)))))
+        
+(format t "~% O resultado da soma eh: ~D" (soma '(1 2 3 4 5)))
+
+(format t "~%~%2-)~%")
+
+(terpri)
+
+(defun maior(L)
+    (cond 
+        ((null L) 0)
+        (t (setq m (maior (cdr L)))
+            (if (> (car L) m)
+            (car L)
+            m))))
+(format t "~% O maior elemento eh: ~D" (maior '(10 2 35 4 50)))
